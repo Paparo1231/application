@@ -1,0 +1,293 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: DEV-1
+      author: Paparo
+      changes:
+        - createTable:
+            tableName: article
+            remarks: Таблица ролей
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: article_pk
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: integer
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: article_url_uq
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: DEV-2
+      author: Paparo
+      changes:
+        - dropTable:
+            cascadeConstraints: true
+            schemaName: public
+            tableName: article
+
+  - changeSet:
+      id: DEV-3
+      author: Paparo
+      changes:
+        - createTable:
+            remarks: таблица ролей
+            schemaName: public
+            tableName: user_roles
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: integer
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: status
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+
+  - changeSet:
+      id: DEV-4
+      author: Paparo
+      changes:
+        - createTable:
+            remarks: таблица пользователей
+            schemaName: public
+            tableName: users_table
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: patronymic
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: surname
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: login
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: phone_number
+                  type: integer
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: email
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+
+  - changeSet:
+      id: DEV-5
+      author: Paparo
+      changes:
+        - createTable:
+            remarks: санкции пользователей
+            schemaName: public
+            tableName: user_sanctions
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: user_id
+                  type: integer
+                  constraints:
+                    - unique: true
+                    - nullable: false
+              - column:
+                  name: role
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: status
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+
+  - changeSet:
+      id: DEV-6
+      author: Paparo
+      changes:
+        - createTable:
+            remarks: скидочные программы пользователей
+            schemaName: public
+            tableName: user_encoragements
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: user_id
+                  type: integer
+                  constraints:
+                    - unique: true
+                    - nullable: false
+              - column:
+                  name: role
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: status
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+
+
+  - changeSet:
+      id: DEV-7
+      author: Paparo
+      changes:
+        - createTable:
+            remarks: таблица товаров
+            schemaName: public
+            tableName: item_table
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: item_name
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: category
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: stock
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+
+  - changeSet:
+      id: DEV-8
+      author: Paparo
+      changes:
+        - createTable:
+            remarks: таблица доставок
+            schemaName: public
+            tableName: delivery_table
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: user_id
+                  type: integer
+                  constraints:
+                    - unique: true
+                    - nullable: false
+              - column:
+                  name: item_id
+                  type: integer
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: date_of_deliverance
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    - nullable: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
