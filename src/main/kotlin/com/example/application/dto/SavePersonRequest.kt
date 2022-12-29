@@ -1,4 +1,4 @@
-package com.example.application.service
+package com.example.application.dto
 
 
 import java.time.LocalDate

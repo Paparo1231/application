@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "delivery_table")
-data class Delivery(
+open class Delivery(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,

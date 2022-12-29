@@ -269,6 +269,8 @@ databaseChangeLog:
                   type: varchar(50)
                   constraints:
                     - nullable: false
+  - include:
+      file: db/changelog/sql/some_tables_created.sql
 
 
 

@@ -1,6 +1,7 @@
 package com.example.application.service
 
 import com.example.application.dao.PersonDao
+import com.example.application.dto.SavePersonRequest
 import com.example.application.entities.Person
 import com.example.application.exceptions.PersonNotFoundException
 import org.slf4j.LoggerFactory
@@ -20,8 +21,7 @@ class PersonServiceImpl(private val personDao: PersonDao) : PersonService {
         PersonNotFoundException(id)
     }
 
-    override fun create(request: SavePersonRequest) {
-        log.info("Создание человека с именем = ${request.name}")
+    override fun create(request: SavePersonRequest): Person =
         personDao.save(
             Person(
                 name = request.name!!,
@@ -32,10 +32,10 @@ class PersonServiceImpl(private val personDao: PersonDao) : PersonService {
                 phone_number = request.phone_number!!,
                 status = request.status!!,
                 email = request.email!!
-
             )
-        )
-    }
+        ).also {
+            log.info("Создан человек с именем = ${it.name}")
+        }
 
     override fun update(id: Int, request: SavePersonRequest) {
         log.info("Изменение человека с id = $id")

@@ -2,20 +2,13 @@ package com.example.application.entities
 
 import javax.persistence.*
 
-
 @Entity
-@Table(name = "item_table")
-data class Item(
+@Table(name = "order_item_table")
+open class OrderItem(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Int? = null,
-
-    @Column
-    val itemName : String,
-
-    @Column
-    val category : String,
-
-    @Column
-    val stock: String
+    val itemId: Int,
+    val orderId: Int,
+    val count: Int
 )
