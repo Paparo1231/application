@@ -1,6 +1,6 @@
 package com.example.application.controller
 
-import com.example.application.dto.SaveItemRequest
+import com.example.application.dto.CreateItemDto
 import com.example.application.entities.Item
 import com.example.application.service.ItemService
 import org.springframework.http.HttpStatus
@@ -24,14 +24,14 @@ class ItemController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@Valid @RequestBody request: SaveItemRequest
+    fun create(@Valid @RequestBody request: CreateItemDto
     ) = itemService.create(request)
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     fun update(
         @PathVariable("id") id: Int,
-        @Valid @RequestBody request: SaveItemRequest
+        @Valid @RequestBody request: CreateItemDto
     ) = itemService.update(id, request)
 
     @DeleteMapping("{id}")

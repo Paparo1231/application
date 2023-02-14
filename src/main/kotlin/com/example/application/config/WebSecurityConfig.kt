@@ -9,15 +9,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity?) {
-        http!!.antMatcher("/**")
-            .authorizeRequests()
-            .antMatchers("/", "/login**", "/js/**", "/error**")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and().logout().logoutSuccessUrl("/").permitAll()
-            .and()
-            .csrf().disable()
+         http!!.antMatcher("/**")
+        .authorizeRequests()
+        .antMatchers("/", "/login**", "/js/**", "/error**", "/person/**", "/items/**", "/main/**")
+         .permitAll()
+         .anyRequest()
+        .authenticated()
+         .and().logout().logoutSuccessUrl("/").permitAll()
+         .and()
+         .csrf().disable()
     }
 
 }

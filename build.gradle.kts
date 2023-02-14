@@ -3,9 +3,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.7.4"
 	id("io.spring.dependency-management") version "1.0.14.RELEASE"
-	kotlin("jvm") version "1.6.21"
+	kotlin("jvm") version "1.6.0"
 	kotlin("plugin.spring") version "1.6.21"
+	id("org.jetbrains.kotlin.plugin.jpa") version "1.6.0"
+
 }
+
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
@@ -26,7 +29,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation ("org.springframework.boot:spring-boot-starter-validation:2.7.5")
-	
+	implementation ("org.springframework.boot:spring-boot-starter-thymeleaf:2.7.7")
+
+
 	implementation("org.postgresql:postgresql:42.5.1")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

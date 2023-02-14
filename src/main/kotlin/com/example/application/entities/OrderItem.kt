@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "order_item_table")
-open class OrderItem(
+data class OrderItem(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Int? = null,

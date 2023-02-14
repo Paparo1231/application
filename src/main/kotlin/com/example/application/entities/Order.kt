@@ -10,6 +10,6 @@ data class Order(
     val id: Int? = null,
     val personId: Int,
     val deliveryMethodId: Int?,
-    //@Enumerated(EnumType.STRING) создай енам епта
-    val status: String
+    @Enumerated(EnumType.STRING)
+    val status: OrderStatus
 )

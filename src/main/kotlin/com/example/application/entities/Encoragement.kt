@@ -5,19 +5,19 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "user_encoragements")
-open class Encoragement(
+data class Encoragement(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
 
     @Column
-    val user_id : Int,
+    val userId : Int,
 
     @Column
-    val role: String,
+    val role: RoleStatus,
 
     @Column
-    val status: String
+    val status: UserStatus
 ) {
 
 }

@@ -7,23 +7,23 @@ import javax.persistence.*
 data class Person(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int = 0,
+    val id: Int? = null,
     @Column
-    val name: String,
+    val name: String?,
     @Column
-    val patronymic: String,
+    val patronymic: String?,
     @Column
-    val surname: String,
+    val surname: String?,
     @Column
-    val login: String,
+    val login: String?,
     @Column
-    val password: String,
+    val password: String?,
     @Column
-    val phone_number: String,
+    val phone_number: String?,
     @Column
-    val email: String,
+    val email: String?,
+    @Enumerated(EnumType.STRING)
     @Column
-    val status: String
-) {
+    var status: RoleStatus?
 
-}
+)

@@ -7,13 +7,12 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-open class Message(
+data class Message(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int = 0,
-
+    val id: Int? = null,
     val data: String,
-    val created: LocalDate
+    val creationDate: LocalDate
 ) {
 
 }

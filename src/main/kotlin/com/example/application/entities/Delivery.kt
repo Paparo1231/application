@@ -1,25 +1,27 @@
 package com.example.application.entities
 
+import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
 @Table(name = "delivery_table")
-open class Delivery(
+ data class Delivery(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
 
     @Column
-    val user_id: Int = 0,
+    val userId: Int = 0,
 
     @Column
-    val item_id : Int = 0,
+    val itemId : Int = 0,
 
     @Column
-    val date_of_deliverance : String,
+    val dateOfDeliverance : LocalDate,
 
     @Column
-    val status: String
+    @Enumerated(EnumType.STRING)
+    val status: DeliveryStatus
 ) {
 
 }

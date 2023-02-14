@@ -12,7 +12,7 @@ class ItemServiceTest {
     private val sut: ItemServiceImpl = ItemServiceImpl(itemDao)
 
     @Test
-    fun `someTest`() {
+    fun someTest() {
         // given
         val item1 = Item(
             id = 1,
