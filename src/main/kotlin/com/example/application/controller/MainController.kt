@@ -13,8 +13,18 @@ import org.springframework.web.servlet.ModelAndView
 )
 class MainController {
 
-        @GetMapping("index")
-        fun index() : ModelAndView{
-            return ModelAndView("index")
-        }
+    @GetMapping("index")
+    fun index(): ModelAndView {
+        return ModelAndView("index")
+    }
+
+    @GetMapping("choosing")
+    fun choosingRole(): ModelAndView {
+        return ModelAndView("choosing_role")
+    }
+
+    @GetMapping("auth")
+    fun authorize(): ModelAndView {
+        return ModelAndView("authorize")
+    }
 }

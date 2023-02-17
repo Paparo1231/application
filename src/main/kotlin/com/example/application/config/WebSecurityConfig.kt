@@ -11,7 +11,7 @@ public class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity?) {
          http!!.antMatcher("/**")
         .authorizeRequests()
-        .antMatchers("/", "/login**", "/js/**", "/error**", "/person/**", "/items/**", "/main/**")
+        .antMatchers("/", "/login**", "/js/**", "/error**", "/person/**", "/items/**", "/main/**", "/**")
          .permitAll()
          .anyRequest()
         .authenticated()
