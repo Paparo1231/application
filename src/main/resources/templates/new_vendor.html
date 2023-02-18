@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="application/json">
+    <title>Регистрация</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/registration_vendor}" th:object="${person}">
+    <label for="name">Имя</label>
+    <input type="text" th:field="*{name}" id="name" required>
+    <br/>
+    <label for="patronymic">Отчетство</label>
+    <input type="text" th:field="*{patronymic}" id="patronymic" required>
+    <br/>
+    <label for="surname">Фамилия</label>
+    <input type="text" th:field="*{surname}" id="surname" required>
+    <br/>
+    <label for="login">Логин</label>
+    <input type="text" th:field="*{login}" id="login"required>
+    <br/>
+    <label for="password">Пароль</label>
+    <input type="password" th:field="*{password}" id="password" required>
+    <br/>
+    <label for="phone_number">Номер телефона</label>
+    <input type="text" th:field="*{phone_number}" id="phone_number" required>
+    <br/>
+    <label for="email">Почта </label>
+    <input type="email" th:field="*{email}" id="email" required>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+
+</body>
+</html>
+
