@@ -6,6 +6,7 @@ import com.example.application.service.ItemService
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.servlet.ModelAndView
 import javax.validation.Valid
 
 @RestController
@@ -13,9 +14,8 @@ import javax.validation.Valid
     "/items", produces =
     [MediaType.APPLICATION_JSON_VALUE]
 )
-class ItemController(
-    private val itemService: ItemService
-) {
+class ItemController(private val itemService: ItemService) {
+
     @GetMapping
     fun findAll() = itemService.findAll()
 
@@ -24,8 +24,10 @@ class ItemController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@Valid @RequestBody request: CreateItemDto
+    fun create(
+        @Valid @RequestBody request: CreateItemDto
     ) = itemService.create(request)
+
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -35,5 +37,32 @@ class ItemController(
     ) = itemService.update(id, request)
 
     @DeleteMapping("{id}")
-    fun deletePerson(@PathVariable("id") id: Int) = itemService.delete(id)
+    fun deleteItem(@PathVariable("id") id: Int) = itemService.delete(id)
+}
+
+@RestController
+@RequestMapping("/new_item")
+class CreationItemController(private val itemService: ItemService) {
+
+    @GetMapping
+    fun creationItemPage(@ModelAttribute("item") item: Item) : ModelAndView {
+        return ModelAndView("new_item")
+    }
+
+
+    @PostMapping
+    fun createConcreteItem(
+        @ModelAttribute("item") item: Item,
+        @ModelAttribute("itemName") itemName: String,
+        @ModelAttribute("category") category: String,
+        @ModelAttribute("amount") amount: Int, createItemDto: CreateItemDto
+    ): ModelAndView {
+        createItemDto.item_name = itemName
+        createItemDto.category = category
+        createItemDto.amount = amount
+
+
+        itemService.create(createItemDto)
+        return ModelAndView("index")
+    }
 }

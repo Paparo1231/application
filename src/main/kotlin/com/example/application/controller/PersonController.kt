@@ -24,9 +24,6 @@ class PersonController {
     @GetMapping
     fun findAll() = personService.findAll()
 
-
-
-
     @GetMapping("{id}")
     fun findById(@PathVariable("id") id: Int): Person {
         return personService.findById(id)

@@ -11,11 +11,11 @@ data class Item(
     val id : Int? = null,
 
     @Column
-    val itemName : String,
+    val itemName : String?,
 
     @Column
-    val category : String,
+    val category : String?,
 
     @Column
-    val stock: String
+    val amount: Int?
 )

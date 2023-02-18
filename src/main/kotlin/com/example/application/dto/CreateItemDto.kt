@@ -1,8 +1,8 @@
 package com.example.application.dto
 
 data class CreateItemDto (
-    val item_name: String?,
-    val category: String?,
-    val stock: String?
+    var item_name: String?,
+    var category: String?,
+    var amount: Int?
         )
 
