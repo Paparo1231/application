@@ -3,6 +3,7 @@ package com.example.application.controller
 import com.example.application.dto.CreateItemDto
 import com.example.application.entities.Item
 import com.example.application.service.ItemService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
@@ -14,7 +15,9 @@ import javax.validation.Valid
     "/items", produces =
     [MediaType.APPLICATION_JSON_VALUE]
 )
-class ItemController(private val itemService: ItemService) {
+class ItemController {
+    @Autowired
+    private lateinit var itemService: ItemService
 
     @GetMapping
     fun findAll() = itemService.findAll()
@@ -42,7 +45,9 @@ class ItemController(private val itemService: ItemService) {
 
 @RestController
 @RequestMapping("/new_item")
-class CreationItemController(private val itemService: ItemService) {
+class CreationItemController {
+    @Autowired
+    private lateinit var itemService: ItemService
 
     @GetMapping
     fun creationItemPage(@ModelAttribute("item") item: Item) : ModelAndView {

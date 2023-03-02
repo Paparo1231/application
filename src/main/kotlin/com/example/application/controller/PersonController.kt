@@ -6,7 +6,10 @@ import com.example.application.service.PersonService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.servlet.ModelAndView
 import javax.validation.Valid
 
 
@@ -27,6 +30,20 @@ class PersonController {
     @GetMapping("{id}")
     fun findById(@PathVariable("id") id: Int): Person {
         return personService.findById(id)
+    }
+
+    @GetMapping("/info")
+    fun personInfo(model: Model) : ModelAndView{
+        val auth = SecurityContextHolder.getContext().authentication
+        val person: Person = auth.principal as Person
+
+        model.addAttribute("username", person.login)
+        model.addAttribute("email", person.email)
+        model.addAttribute("phoneNumber", person.phone_number)
+        model.addAttribute("role", person.status)
+        model.addAttribute("id", "test Id")
+
+        return ModelAndView("show_person")
     }
 
     @PostMapping

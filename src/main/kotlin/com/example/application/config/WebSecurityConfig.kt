@@ -15,6 +15,8 @@ public class WebSecurityConfig : WebSecurityConfigurerAdapter() {
             .permitAll()
             .anyRequest().authenticated()
             .and().formLogin().permitAll()
+            .usernameParameter("login")
+            .passwordParameter("password")
             .and().logout().permitAll()
             .and().csrf().disable()
 

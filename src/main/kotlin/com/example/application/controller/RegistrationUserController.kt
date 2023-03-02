@@ -42,6 +42,6 @@ class RegistrationUserController {
 
         personService.create(createPersonDto)
 
-        return ModelAndView("index")
+        return ModelAndView("success")
     }
 }

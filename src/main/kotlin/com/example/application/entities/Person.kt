@@ -33,5 +33,4 @@ data class Person(
     @Enumerated(EnumType.STRING)
     @Column
     var status: RoleStatus?
-
 )
