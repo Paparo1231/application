@@ -3,6 +3,7 @@ package com.example.application.controller
 import com.example.application.dto.CreatePersonDto
 import com.example.application.entities.Person
 import com.example.application.service.PersonService
+import com.example.application.service.SecurityService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -23,6 +24,9 @@ class PersonController {
     @Autowired
     private lateinit var personService: PersonService
 
+    @Autowired
+    private lateinit var securityService: SecurityService
+
 
     @GetMapping
     fun findAll() = personService.findAll()
@@ -41,9 +45,14 @@ class PersonController {
         model.addAttribute("email", person.email)
         model.addAttribute("phoneNumber", person.phone_number)
         model.addAttribute("role", person.status)
-        model.addAttribute("id", "test Id")
+        model.addAttribute("id", person.id)
 
         return ModelAndView("show_person")
+    }
+
+    @GetMapping("/login")
+    fun login(model: Model, logout: String) {
+
     }
 
     @PostMapping

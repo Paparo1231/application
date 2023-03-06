@@ -30,6 +30,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation ("org.springframework.boot:spring-boot-starter-validation:2.7.5")
 	implementation ("org.springframework.boot:spring-boot-starter-thymeleaf:2.7.7")
+	compileOnly("org.projectlombok:lombok:1.18.26")
+
+
 
 
 	implementation("org.postgresql:postgresql:42.5.1")

@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository
 
 interface PersonDao : CrudRepository<Person, Int> {
     fun findByOrderByName(): List<Person>
+
+    fun findByLogin(username: String?): Person
 }

@@ -4,6 +4,7 @@ import com.example.application.dto.CreatePersonDto
 import com.example.application.entities.Person
 import com.example.application.entities.RoleStatus
 import com.example.application.service.PersonService
+import com.example.application.service.SecurityService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.ModelAndView
@@ -13,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView
 class RegistrationUserController {
     @Autowired
     private lateinit var personService: PersonService
+
+    @Autowired
+    private lateinit var securityService: SecurityService
 
     @GetMapping
     fun createUserPage(@ModelAttribute("person") person: Person): ModelAndView {
@@ -41,6 +45,8 @@ class RegistrationUserController {
         createPersonDto.status = RoleStatus.USER
 
         personService.create(createPersonDto)
+
+        securityService.autoLogin(login, password)
 
         return ModelAndView("success")
     }
