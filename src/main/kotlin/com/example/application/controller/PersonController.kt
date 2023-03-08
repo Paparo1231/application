@@ -44,7 +44,7 @@ class PersonController {
         model.addAttribute("username", person.login)
         model.addAttribute("email", person.email)
         model.addAttribute("phoneNumber", person.phone_number)
-        model.addAttribute("role", person.status)
+        model.addAttribute("role", person.role)
         model.addAttribute("id", person.id)
 
         return ModelAndView("show_person")

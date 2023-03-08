@@ -1,7 +1,8 @@
 package com.example.application.entities
 
-enum class RoleStatus {
+
+enum class Role {
     USER,
-    VENDOR,
-    ADMIN
+    ADMIN,
+    VENDOR
 }

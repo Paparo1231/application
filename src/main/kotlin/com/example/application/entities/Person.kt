@@ -1,8 +1,11 @@
 package com.example.application.entities
 
+import lombok.Data
 import javax.persistence.*
 import javax.validation.constraints.NotEmpty
 
+
+@Data
 @Entity
 @Table(name = "users_table")
 data class Person(
@@ -32,5 +35,5 @@ data class Person(
     val email: String?,
     @Enumerated(EnumType.STRING)
     @Column
-    var status: RoleStatus?
+    var role: Role?
 )

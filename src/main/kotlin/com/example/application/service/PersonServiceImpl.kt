@@ -30,7 +30,7 @@ class PersonServiceImpl(private val personDao: PersonDao) : PersonService {
                 login = request.login!!,
                 password = request.password!!,
                 phone_number = request.phone_number!!,
-                status = request.status!!,
+                role = request.role!!,
                 email = request.email!!
             )
         ).also {
@@ -49,7 +49,7 @@ class PersonServiceImpl(private val personDao: PersonDao) : PersonService {
                 login = request.login!!,
                 password = request.password!!,
                 phone_number = request.phone_number!!,
-                status = request.status!!,
+                role = request.role!!,
                 email = request.email!!
             )
         )

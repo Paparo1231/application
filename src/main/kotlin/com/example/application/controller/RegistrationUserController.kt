@@ -2,7 +2,7 @@ package com.example.application.controller
 
 import com.example.application.dto.CreatePersonDto
 import com.example.application.entities.Person
-import com.example.application.entities.RoleStatus
+import com.example.application.entities.Role
 import com.example.application.service.PersonService
 import com.example.application.service.SecurityService
 import org.springframework.beans.factory.annotation.Autowired
@@ -42,7 +42,7 @@ class RegistrationUserController {
         createPersonDto.password = password
         createPersonDto.phone_number = phone_number
         createPersonDto.email = email
-        createPersonDto.status = RoleStatus.USER
+        createPersonDto.role = Role.USER
 
         personService.create(createPersonDto)
 

@@ -14,7 +14,7 @@ data class Encoragement(
     val userId : Int,
 
     @Column
-    val role: RoleStatus,
+    val role: Role,
 
     @Column
     val status: UserStatus
