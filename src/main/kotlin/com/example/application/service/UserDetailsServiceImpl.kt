@@ -15,7 +15,8 @@ import org.springframework.transaction.annotation.Transactional
 @Service("userDetailsServiceImpl")
 class UserDetailsServiceImpl : UserDetailsService {
     val personDao: PersonDao
-    private lateinit var securityPerson : SecurityPerson
+    private lateinit var securityPerson: SecurityPerson
+
 
     @Autowired
     constructor(personDao: PersonDao) {
@@ -28,11 +29,15 @@ class UserDetailsServiceImpl : UserDetailsService {
         val person: Person =
             personDao.findByLogin(username)
 
+
+
         val grantedAuthorities: HashSet<GrantedAuthority> = hashSetOf(
             SimpleGrantedAuthority(Role.USER.toString()),
             SimpleGrantedAuthority(Role.VENDOR.toString()),
             SimpleGrantedAuthority(Role.ADMIN.toString())
         )
+
+        securityPerson = SecurityPerson(person.login, person.password, grantedAuthorities, true)
 
         return securityPerson.fromPerson(person)
     }

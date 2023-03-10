@@ -48,6 +48,6 @@ class RegistrationUserController {
 
         securityService.autoLogin(login, password)
 
-        return ModelAndView("success")
+        return ModelAndView("creation_user_success")
     }
 }

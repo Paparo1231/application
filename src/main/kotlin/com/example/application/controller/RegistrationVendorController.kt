@@ -42,6 +42,6 @@ class RegistrationVendorController {
 
         personService.create(createPersonDto)
 
-        return ModelAndView("success")
+        return ModelAndView("creation_user_success")
     }
 }

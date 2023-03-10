@@ -1,7 +1,5 @@
 package com.example.application.config
 
-import com.example.application.dao.PersonDao
-import com.example.application.service.PersonService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
@@ -12,18 +10,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.NoOpPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
+
 
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
-
-    @Autowired
-    private lateinit var personService: PersonService
-
-    @Autowired
-    private lateinit var personDao: PersonDao
 
     private lateinit var userDetailsService: UserDetailsService
 
@@ -36,10 +29,10 @@ class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity?) {
         http!!.antMatcher("/**")
             .authorizeRequests()
-            .antMatchers("/login**", "/main/**", "/**")
+            .antMatchers("/main/index", "/main/choosing", "/registration_user", "/registration_vendor")
             .permitAll()
             .anyRequest().authenticated()
-            .and().formLogin().permitAll()
+            .and().formLogin().permitAll().defaultSuccessUrl("/person/post_auth_menu")
             .usernameParameter("login")
             .passwordParameter("password")
             .and().logout().permitAll()
@@ -49,12 +42,12 @@ class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
 
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
-        auth!!.authenticationProvider(daoAuthenticationProvider())
+        auth!!.authenticationProvider(daoAuthenticationProvider()).userDetailsService(userDetailsService)
     }
 
     @Bean
     fun passwordEncoder(): PasswordEncoder {
-        return BCryptPasswordEncoder(12)
+        return NoOpPasswordEncoder.getInstance()
     }
 
     @Bean
@@ -64,4 +57,5 @@ class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
         daoAuthenticationProvider.setUserDetailsService(userDetailsService())
         return daoAuthenticationProvider
     }
+
 }

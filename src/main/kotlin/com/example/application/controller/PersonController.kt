@@ -27,7 +27,6 @@ class PersonController {
     @Autowired
     private lateinit var securityService: SecurityService
 
-
     @GetMapping
     fun findAll() = personService.findAll()
 
@@ -50,9 +49,9 @@ class PersonController {
         return ModelAndView("show_person")
     }
 
-    @GetMapping("/login")
-    fun login(model: Model, logout: String) {
-
+    @GetMapping("/post_auth_menu")
+    fun createPostAuthPage() :ModelAndView {
+        return ModelAndView("post_auth_menu")
     }
 
     @PostMapping

@@ -8,12 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails
 
 @Data
 class SecurityPerson : UserDetails {
-    private lateinit var username: String
-    private lateinit var password: String
-    private lateinit var authorities: MutableCollection<GrantedAuthority>
+    private val username: String?
+    private val password: String?
+    private val authorities: MutableCollection<GrantedAuthority>?
     val isActive: Boolean
 
-    constructor(username: String, password: String, authorities: MutableCollection<GrantedAuthority>, isActive: Boolean) {
+    constructor(username: String?, password: String?, authorities: MutableCollection<GrantedAuthority>?, isActive: Boolean) {
         this.username = username
         this.password = password
         this.authorities = authorities
@@ -21,15 +21,15 @@ class SecurityPerson : UserDetails {
     }
 
 
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority>? {
         return authorities
     }
 
-    override fun getPassword(): String {
+    override fun getPassword(): String? {
         return password
     }
 
-    override fun getUsername(): String {
+    override fun getUsername(): String? {
         return username
     }
 
