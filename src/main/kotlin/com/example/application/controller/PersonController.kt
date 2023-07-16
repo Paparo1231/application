@@ -3,7 +3,6 @@ package com.example.application.controller
 import com.example.application.dto.CreatePersonDto
 import com.example.application.entities.Person
 import com.example.application.service.PersonService
-import com.example.application.service.SecurityService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -24,9 +23,6 @@ class PersonController {
     @Autowired
     private lateinit var personService: PersonService
 
-    @Autowired
-    private lateinit var securityService: SecurityService
-
     @GetMapping
     fun findAll() = personService.findAll()
 
@@ -35,22 +31,13 @@ class PersonController {
         return personService.findById(id)
     }
 
-    @GetMapping("/info")
-    fun personInfo(model: Model) : ModelAndView{
-        val auth = SecurityContextHolder.getContext().authentication
-        val person: Person = auth.principal as Person
-
-        model.addAttribute("username", person.login)
-        model.addAttribute("email", person.email)
-        model.addAttribute("phoneNumber", person.phone_number)
-        model.addAttribute("role", person.role)
-        model.addAttribute("id", person.id)
-
-        return ModelAndView("show_person")
-    }
-
     @GetMapping("/post_auth_menu")
-    fun createPostAuthPage() :ModelAndView {
+    fun createPostAuthPage(model: Model, person: Person): ModelAndView {
+        val user = SecurityContextHolder.getContext().authentication
+        val name = user.name
+        model.addAttribute("name", name)
+        model.addAttribute("person", person)
+
         return ModelAndView("post_auth_menu")
     }
 

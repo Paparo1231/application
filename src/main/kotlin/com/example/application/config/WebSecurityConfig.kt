@@ -57,5 +57,4 @@ class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
         daoAuthenticationProvider.setUserDetailsService(userDetailsService())
         return daoAuthenticationProvider
     }
-
 }

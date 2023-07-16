@@ -17,5 +17,8 @@ data class Item(
     val category : String?,
 
     @Column
-    val amount: Int?
+    val amount: Int?,
+
+    @Column
+    val price: Int?
 )

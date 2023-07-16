@@ -21,7 +21,7 @@ import javax.persistence.*
 
     @Column
     @Enumerated(EnumType.STRING)
-    val status: DeliveryStatus
+    val deliveryMethod: DeliveryMethod
 ) {
 
 }

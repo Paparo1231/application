@@ -37,20 +37,20 @@ class PersonServiceImpl(private val personDao: PersonDao) : PersonService {
             log.info("Создан человек с именем = ${it.name}")
         }
 
-    override fun update(id: Int, request: CreatePersonDto) {
+    override fun update(id: Int, dto: CreatePersonDto) {
         log.info("Изменение человека с id = $id")
         val person = personDao.findByIdOrNull(id) ?: throw
                 PersonNotFoundException(id)
         personDao.save(
             person.copy(
-                name = request.name!!,
-                patronymic = request.patronymic!!,
-                surname = request.surname!!,
-                login = request.login!!,
-                password = request.password!!,
-                phone_number = request.phone_number!!,
-                role = request.role!!,
-                email = request.email!!
+                name = dto.name!!,
+                patronymic = dto.patronymic!!,
+                surname = dto.surname!!,
+                login = dto.login!!,
+                password = dto.password!!,
+                phone_number = dto.phone_number!!,
+                role = dto.role!!,
+                email = dto.email!!
             )
         )
     }

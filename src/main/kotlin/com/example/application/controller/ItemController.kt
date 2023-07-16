@@ -60,12 +60,13 @@ class CreationItemController {
         @ModelAttribute("item") item: Item,
         @ModelAttribute("itemName") itemName: String,
         @ModelAttribute("category") category: String,
-        @ModelAttribute("amount") amount: Int, createItemDto: CreateItemDto
+        @ModelAttribute("amount") amount: Int,
+        @ModelAttribute("price") price: Int, createItemDto: CreateItemDto
     ): ModelAndView {
         createItemDto.item_name = itemName
         createItemDto.category = category
         createItemDto.amount = amount
-
+        createItemDto.price = price
 
         itemService.create(createItemDto)
         return ModelAndView("index")

@@ -10,6 +10,7 @@ data class Order(
     val id: Int? = null,
     val personId: Int,
     val deliveryMethodId: Int?,
+    val address: String?,
     @Enumerated(EnumType.STRING)
     val status: OrderStatus
 )

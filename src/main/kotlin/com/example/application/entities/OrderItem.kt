@@ -9,6 +9,7 @@ data class OrderItem(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Int? = null,
     val itemId: Int,
+    val itemName: String,
     val orderId: Int,
     val count: Int
 )

@@ -27,7 +27,8 @@ class ItemServiceImpl(private val itemDao: ItemDao) : ItemService {
             Item(
                 itemName = request.item_name!!,
                 category = request.category!!,
-                amount = request.amount!!
+                amount = request.amount!!,
+                price = request.price!!
             )
         ).also {
             log.info("Создание товара с названием = ${request.item_name}")
@@ -40,7 +41,8 @@ class ItemServiceImpl(private val itemDao: ItemDao) : ItemService {
                     it.copy(
                         itemName = request.item_name!!,
                         category = request.category!!,
-                        amount = request.amount!!
+                        amount = request.amount!!,
+                        price = request.price!!
                     )
                 )
             }

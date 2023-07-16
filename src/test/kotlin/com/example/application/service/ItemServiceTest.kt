@@ -16,9 +16,10 @@ class ItemServiceTest {
         // given
         val item1 = Item(
             id = 1,
-            itemName = "Эта хуйня",
+            itemName = "Это самое",
             category = "Категория",
-            stock = "Stock"
+            amount = 3,
+            price = 5000
         )
         every { itemDao.findAll() } returns arrayListOf(item1)
 

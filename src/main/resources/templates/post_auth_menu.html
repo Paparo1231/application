@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Menu</title>
 </head>
 <body>
 
-<i>Вечер в хату, (сделать вывод имени авторизованного пользователя)</i>
+<div sec:authorize="isAuthenticated()">
+    Authenticated as <span sec:authentication="name"></span></div>
+
 <p><a href="">Личный кабинет</a></p>
+<p><a href="">Посмотреть список доступных товаров</a></p>
 <p><a href="">Посмотреть список заказов</a></p>
 <p><a href="/logout">Выйти из аккаунта</a></p>
 
